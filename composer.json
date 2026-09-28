@@ -1,0 +1,25 @@
+{
+    "name": "modules4presta/m4p_reservations",
+    "description": "Reserve PrestaShop stock while a product sits in the cart, so two customers cannot buy the same item.",
+    "type": "prestashop-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nice Code sp. z o.o. (Modules4Presta)",
+            "email": "contact@modules4presta.io",
+            "homepage": "https://nice-code.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "M4p_Reservations\\": "src/"
+        }
+    },
+    "config": {
+        "prepend-autoloader": false
+    },
+    "homepage": "https://nice-code.com/pl/produkty/sklep-b2b-prestashop"
+}

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="module" source-language="en-US" target-language="pl-PL" datatype="plaintext">
+    <body>
+      <trans-unit id="16d6b71520ef3d2c936eee2d02067180">
+        <source>Cart stock reservation</source>
+        <target>Rezerwacja stanu w koszyku</target>
+      </trans-unit>
+      <trans-unit id="6699f866bf977d0c2968cf833ecc7750">
+        <source>Holds the stock of everything in a cart for a set number of minutes, so two customers cannot buy the same last item.</source>
+        <target>Trzyma stan produktów z koszyka przez ustaloną liczbę minut, żeby dwóch klientów nie kupiło tej samej ostatniej sztuki.</target>
+      </trans-unit>
+      <trans-unit id="f38f5974cdc23279ffe6d203641a8bdf">
+        <source>Settings updated.</source>
+        <target>Ustawienia zapisane.</target>
+      </trans-unit>
+      <trans-unit id="5b5b430a450cc5371bf57077eeaba165">
+        <source>Reservation settings</source>
+        <target>Ustawienia rezerwacji</target>
+      </trans-unit>
+      <trans-unit id="a8aa2780ba4332ab9bf8b8cc7f29b820">
+        <source>Reserve stock held in carts</source>
+        <target>Rezerwuj stan produktów w koszykach</target>
+      </trans-unit>
+      <trans-unit id="93cba07454f06a4a960172bbd6e2a435">
+        <source>Yes</source>
+        <target>Tak</target>
+      </trans-unit>
+      <trans-unit id="bafd7322c6e97d25b6299b5d6fe8920b">
+        <source>No</source>
+        <target>Nie</target>
+      </trans-unit>
+      <trans-unit id="972717e2c6fbcdd6ae36e16c966209b3">
+        <source>How long stock stays reserved</source>
+        <target>Jak długo stan jest zarezerwowany</target>
+      </trans-unit>
+      <trans-unit id="640fd0cc0ffa0316ae087652871f4486">
+        <source>minutes</source>
+        <target>min</target>
+      </trans-unit>
+      <trans-unit id="6ae71ef43ec9fdff030902b42aa6fb6f">
+        <source>Counted from the last change to the cart. When it runs out, the stock goes back on sale.</source>
+        <target>Liczone od ostatniej zmiany koszyka. Po tym czasie stan wraca do sprzedaży.</target>
+      </trans-unit>
+      <trans-unit id="c9cc8cce247e49bae79f15173ce97354">
+        <source>Save</source>
+        <target>Zapisz</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
