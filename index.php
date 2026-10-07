@@ -1,7 +1,7 @@
 <?php
 
 /**
- * m4pshortproductdate
+ * m4p_reservations
  *
  * @author    Modules4Presta <contact@modules4presta.io>
  * @copyright 2026 Nice Code sp. z o.o. (Modules4Presta)
