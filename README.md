@@ -1,6 +1,6 @@
 # M4P Cart Stock Reservation for PrestaShop 8 & 9
 
-**Stop selling the same last item twice — stock in a cart is held for a few minutes, and released the moment the cart goes cold.**
+**Stop selling the same last item twice – stock in a cart is held for a few minutes, and released the moment the cart goes cold.**
 
 > **Meta description (148 chars):** Reserve PrestaShop stock while a product sits in the cart. The last item stays yours until checkout, and returns to sale when the cart expires. MIT module.
 
@@ -9,28 +9,30 @@
 ## Why a cart without reservations oversells
 
 PrestaShop takes stock off the shelf when an order is placed, not when a product goes into a cart.
-On a shop where stock is genuinely limited — a wholesale shop, a shop selling machines, anything
-with one piece in the warehouse — that gap is where the trouble is:
+On a shop where stock is genuinely limited – a wholesale shop, a shop selling machines, anything
+with one piece in the warehouse – that gap is where the trouble is:
 
-- **Two customers, one item** — both add it, both pay, one gets an apologetic phone call
-- **The slow checkout loses** — a buyer filling in company details loses the item to a faster click
-- **Angry cancellations** — an order cancelled for lack of stock costs more than the sale
-- **No cron to set up** — reservations expire on their own, on ordinary shop traffic
+- **Two customers, one item** – both add it, both pay, one gets an apologetic phone call
+- **The slow checkout loses** – a buyer filling in company details loses the item to a faster click
+- **Angry cancellations** – an order cancelled for lack of stock costs more than the sale
+- **No cron to set up** – reservations expire on their own, on ordinary shop traffic
 
 ## What the module does
 
 Putting a product in the cart takes its quantity out of the available stock for everyone else. The
 reservation is refreshed on every change to the cart and expires a set number of minutes after the
-last one, at which point the stock goes back on sale. Placing the order releases the reservation,
-because the order itself removes the stock.
+last one, at which point the stock goes back on sale. Removing a line or lowering its quantity
+gives the difference back at once, and so does deleting the cart (in the shop, in the back office
+or by a script). Placing the order releases the reservation, because the order itself removes the
+stock.
 
 ### Key features
 
-- **Every line in every cart** — products and combinations alike
-- **Timer restarts on activity** — a customer still shopping does not lose their reservation
-- **No cron** — expired reservations are cleared on ordinary front office traffic
-- **The customer's own cart is not counted twice** — they see what is really left for them
-- **One switch and one number** — enabled, and how many minutes
+- **Every line in every cart** – products and combinations alike
+- **Timer restarts on activity** – a customer still shopping does not lose their reservation
+- **No cron** – expired reservations are cleared on ordinary front office traffic
+- **The customer's own cart is not counted twice** – they see what is really left for them
+- **One switch and one number** – enabled, and how many minutes
 
 ### How it looks from both sides
 
@@ -46,9 +48,10 @@ sale.
 | PHP | 7.4+ |
 | Requirements | none |
 | Multistore | Reservations are recorded per shop |
-| Themes | Works with any theme — the module changes stock, not templates |
+| Themes | Works with any theme – the module changes stock, not templates |
 
-The module performs no core overrides; it uses the `actionOverrideQuantityAvailableByProduct` hook
+The module installs one override, `Cart::applyProductCalculations()`, which gives a cart line back the
+customer's own reservation; availability checks use the `actionOverrideQuantityAvailableByProduct` hook
 that PrestaShop provides for exactly this. It creates one table, `m4p_reservation`, releases every
 reservation and drops the table on uninstall.
 
@@ -69,7 +72,7 @@ reservation and drops the table on uninstall.
 
 **What happens when the reservation expires while the customer is still on the checkout page?**
 The stock goes back on sale, and the order fails at validation if someone else took it meanwhile.
-Set the time to cover a realistic checkout — 15 minutes is the default for a reason.
+Set the time to cover a realistic checkout – 15 minutes is the default for a reason.
 
 **Does a guest cart reserve stock too?**
 Yes. Any cart with products reserves them; the module does not care whether the visitor is signed in.
@@ -91,15 +94,15 @@ B2B inventory, hold stock in cart.
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Free to use commercially, fork and modify; keep the copyright notice.
+MIT – see [LICENSE](LICENSE). Free to use commercially, fork and modify; keep the copyright notice.
 
 ## Contributing
 
-Bug reports and pull requests are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). For security
+Bug reports and pull requests are welcome – see [CONTRIBUTING.md](CONTRIBUTING.md). For security
 issues, follow [SECURITY.md](SECURITY.md) instead of opening a public issue.
 
 ---
 
-Built by [Nice Code](https://nice-code.com/pl/produkty/sklep-b2b-prestashop) — we build B2B stores on PrestaShop.
+Built by [Nice Code](https://nice-code.com/pl/produkty/sklep-b2b-prestashop) – we build B2B stores on PrestaShop.
 
-© Nice Code sp. z o.o. (Modules4Presta) — released under the MIT license.
+© Nice Code sp. z o.o. (Modules4Presta) – released under the MIT license.
