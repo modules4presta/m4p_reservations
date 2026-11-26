@@ -94,15 +94,16 @@ final class ReservationRepository
     }
 
     /**
-     * Reservations that have already expired (expires_at < NOW()).
+     * Reservations that have expired (expires_at < NOW()) or whose cart no longer exists.
      *
      * @return array<int, array{id_reservation:int,id_product:int,id_product_attribute:int,id_shop:int,quantity:int}>
      */
     public function getExpired(int $limit): array
     {
-        $sql = 'SELECT `id_reservation`, `id_product`, `id_product_attribute`, `id_shop`, `quantity`
-            FROM `' . $this->table() . '`
-            WHERE `expires_at` < NOW()
+        $sql = 'SELECT r.`id_reservation`, r.`id_product`, r.`id_product_attribute`, r.`id_shop`, r.`quantity`
+            FROM `' . $this->table() . '` r
+            LEFT JOIN `' . _DB_PREFIX_ . 'cart` c ON c.`id_cart` = r.`id_cart`
+            WHERE r.`expires_at` < NOW() OR c.`id_cart` IS NULL
             LIMIT ' . max(1, (int) $limit);
 
         return $this->fetchRows($sql);

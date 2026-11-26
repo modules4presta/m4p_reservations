@@ -30,7 +30,7 @@ class M4p_Reservations extends Module
     {
         $this->name = 'm4p_reservations';
         $this->tab = 'front_office_features';
-        $this->version = '1.0.0';
+        $this->version = '1.2.0';
         $this->author = 'Modules4Presta';
         $this->need_instance = 0;
         $this->bootstrap = true;
@@ -50,6 +50,7 @@ class M4p_Reservations extends Module
             && (new ReservationRepository())->createTable()
             && $this->registerHook('actionCartSave')
             && $this->registerHook('actionValidateOrder')
+            && $this->registerHook('actionObjectCartDeleteAfter')
             && $this->registerHook('actionFrontControllerSetMedia')
             && $this->registerHook('actionOverrideQuantityAvailableByProduct');
     }
@@ -116,6 +117,17 @@ class M4p_Reservations extends Module
 
         if (!empty($params['order']) && $params['order'] instanceof Order) {
             $this->getManager()->releaseCart((int) $params['order']->id_cart);
+        }
+    }
+
+    /**
+     * A deleted cart (front office, back office, a script using Cart::delete()) gives its reserved stock back at once.
+     */
+    public function hookActionObjectCartDeleteAfter(array $params): void
+    {
+        $cart = $params['object'] ?? null;
+        if ($cart instanceof Cart && (int) $cart->id > 0) {
+            $this->getManager()->releaseCart((int) $cart->id);
         }
     }
 
